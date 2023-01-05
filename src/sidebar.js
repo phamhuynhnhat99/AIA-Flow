@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ nodeTypes }) => {
+export default ({ nodeTypes, nodeNames }) => {
 
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
@@ -9,11 +9,6 @@ export default ({ nodeTypes }) => {
 
 
   const mapNodeName = (nameNode) => {
-
-    const nodeNames = {
-      CustomNode: 'Custom Node',
-      readImageNode: 'Read Image'
-    };
     return Object.keys(nodeNames).map((key) => nameNode === key ? nodeNames[key] : '');
   }
 
@@ -40,13 +35,6 @@ export default ({ nodeTypes }) => {
         })
       }
 
-      <div
-        className="dndnode"
-        onDragStart={(event) => onDragStart(event, "default")}
-        draggable
-      >
-        Default Node
-      </div>
       {/* <div
         className="dndnode input"
         onDragStart={(event) => onDragStart(event, "input")}

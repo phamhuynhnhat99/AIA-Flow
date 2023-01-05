@@ -3,8 +3,8 @@ import { memo } from "react";
 import {baseNode} from "./BaseNode";
 
 export default memo(({ isConnectable }) => {
-  const nameNode = "Read Image"
-  const num_inp = 1;
-  const num_out = 1;
+  const nameNode = "Test Node"
+  const num_inp = 5;
+  const num_out = 7;
   return baseNode(nameNode, isConnectable, num_inp, num_out)
 });

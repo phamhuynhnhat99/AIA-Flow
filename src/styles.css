@@ -35,6 +35,12 @@
   border-color: #00d111;
 }
 
+.dndflow .dndnode.custom.show {
+  border-color: #bbe116;
+  width: 200px;
+  height: 40px;
+}
+
 .dndflow .dndnode.output {
   border-color: #ff0072;
 }

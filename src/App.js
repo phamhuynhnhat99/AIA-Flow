@@ -9,12 +9,23 @@ import "./styles.css";
 import InitialElements from "./initialElements";
 
 import exportNodeTypes from "./CustomNodes/exportNodes";
+import exportNodeNames from "./CustomNodes/exportNodes";
 
 import Sidebar from "./sidebar.js";
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
 export const nodeTypes = exportNodeTypes.exportNodeTypes
+export const nodeNames = exportNodeNames.exportNodeNames
+
+
+function download(content, fileName, contentType) {
+  const a = document.createElement("a");
+  const file = new Blob([content], { type: contentType });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
+}
 
 export default function App() {
   const reactFlowWrapper = useRef(null);
@@ -26,7 +37,9 @@ export default function App() {
   const onSave = useCallback(() => {
     if (reactFlowInstance) {
       const flow = reactFlowInstance.toObject();
-      console.log(JSON.stringify(flow));
+      var aia_json = JSON.stringify(flow)
+      // console.log(aia_json)
+      download(aia_json, "aia-flow.json", "text/plain");
     }
   }, [reactFlowInstance]);
   const onLoad = (_reactFlowInstance) =>
@@ -49,7 +62,7 @@ export default function App() {
       position,
       data: { label: `${type} node` }
     };
-    console.log(newNode);
+    // console.log(newNode);
     setElements((es) => es.concat(newNode));
   };
   return (
@@ -75,7 +88,7 @@ export default function App() {
             <Controls style={{marginBottom: '50vh'}}/>
           </ReactFlow>
         </div>
-        <Sidebar nodeTypes= {nodeTypes}/>
+        <Sidebar nodeTypes= {nodeTypes} nodeNames = {nodeNames} />
       </ReactFlowProvider>
     </div>
   );
