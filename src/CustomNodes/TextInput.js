@@ -1,10 +1,37 @@
-import { memo } from "react";
+import React, { memo, useState } from "react";
 
-import {baseNode} from "./BaseNode";
+import { Handle } from "react-flow-renderer";
 
-export default memo(({ isConnectable }) => {
-  const nameNode = "Text Input"
-  const num_inp = 0;
-  const num_out = 1;
-  return baseNode(nameNode, isConnectable, num_inp, num_out)
+export default memo(({ data, isConnectable }) => {
+  data["nameNode"] = "Text Input";
+
+  const [text, setText] = useState("");
+
+  const onChange = ( e ) => {
+    data.text = e.target.value;
+    setText(e.target.value);
+  }
+
+  return (
+    <>
+      <div className="dndnode custom input"> 
+        {data.nameNode}
+        <input 
+          type="text"
+          value={data.text}
+          onChange={
+            onChange
+          }
+        />
+      </div>
+
+      <Handle
+        type="source"
+        position="bottom"
+        id={"_out_0"}
+        style={{ bottom: 7, left: 100, background: "#555" }}
+        isConnectable={isConnectable}
+      />
+    </>
+  );
 });

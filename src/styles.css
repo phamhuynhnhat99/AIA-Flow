@@ -41,6 +41,12 @@
   height: 40px;
 }
 
+.dndflow .dndnode.custom.input {
+  border-color: blue;
+  width: 200px;
+  height: 40px;
+}
+
 .dndflow .dndnode.output {
   border-color: #ff0072;
 }

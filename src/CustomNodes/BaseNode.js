@@ -2,7 +2,7 @@ import React from "react";
 
 import { Handle } from "react-flow-renderer";
 
-export const baseNode = (nameNode, isConnectable, num_inp, num_out) => {
+export const baseNode = (data, isConnectable, num_inp, num_out) => {
 
   let componentInputReturn = [];
   let componentOutputReturn = [];
@@ -40,16 +40,7 @@ export const baseNode = (nameNode, isConnectable, num_inp, num_out) => {
     <>
       {componentInputReturn}
 
-      {/* <Handle
-        type="target"
-        position="top"
-        id="b"
-        style={{ left: 50*(0+1), background: "#555" }}
-        onConnect={(params) => console.log("handle onConnect", params)}
-        isConnectable={isConnectable}
-      /> */}
-
-      <div className="dndnode custom show"> {nameNode} </div>
+      <div className="dndnode custom show"> {data.nameNode} </div>
 
       {componentOutputReturn}
     </>
