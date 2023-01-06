@@ -5,6 +5,7 @@ import ReactFlow, {
   removeElements,
   Controls
 } from "react-flow-renderer";
+
 import "./styles.css";
 import InitialElements from "./initialElements";
 
@@ -31,20 +32,39 @@ export default function App() {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [elements, setElements] = useState(InitialElements);
+  const { setViewport } = useRef();
 
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
   const onElementsRemove = (elementsToRemove) =>
     setElements((els) => removeElements(elementsToRemove, els));
 
-  const onSave = useCallback(() => {
+  const onDownload = useCallback(() => {
     if (reactFlowInstance) {
       const flow = reactFlowInstance.toObject();
       var aia_json = JSON.stringify(flow)
-      // console.log(aia_json)
       download(aia_json, "aia-flow.json", "text/plain");
     }
   }, [reactFlowInstance]);
+
+  const [files, setFiles] = useState("");
+  const onUpload = e => {
+    const fileReader = new FileReader();
+    fileReader.readAsText(e.target.files[0], "UTF-8");
+    fileReader.onload = e => {
+      setFiles(e.target.result);
+      var flow = JSON.parse(e.target.result);
+      if (flow) {
+        // console.log(flow.position);
+        const x = flow.position["0"];
+        const y = flow.position["1"];
+        const zoom = flow.position["zoom"];
+        setElements(flow.elements || []);
+        // setViewport({ x, y, zoom });
+      }
+    };
+  };
+
 
   const onLoad = (_reactFlowInstance) =>
     setReactFlowInstance(_reactFlowInstance);
@@ -68,7 +88,6 @@ export default function App() {
       position,
       data: { label: `${type} node`}
     };
-    
     if (newNode.type === "textInputNode") {
       newNode.data["text"] = "0";
     }
@@ -80,7 +99,12 @@ export default function App() {
   return (
     <div className="dndflow">
       <div>
-        <button onClick={onSave}>save</button>
+        <button className="downandup" onClick={onDownload}>Download JSON</button>
+        <br />
+        <div className="downandup">
+          <h5>Upload JSON</h5>
+          <input onChange={onUpload} type="file" />
+        </div>
       </div>
       <ReactFlowProvider>
         <div
