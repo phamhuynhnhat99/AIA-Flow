@@ -3,6 +3,7 @@ import ReactFlow, {
   ReactFlowProvider,
   addEdge,
   removeElements,
+  useZoomPanHelper,
   Controls
 } from "react-flow-renderer";
 
@@ -28,12 +29,10 @@ function download(content, fileName, contentType) {
   a.click();
 }
 
-export default function App() {
+const App = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [elements, setElements] = useState(InitialElements);
-  const { setViewport } = useRef();
-
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
   const onElementsRemove = (elementsToRemove) =>
@@ -47,23 +46,21 @@ export default function App() {
     }
   }, [reactFlowInstance]);
 
+  const { transform } = useZoomPanHelper();
   const [files, setFiles] = useState("");
-  const onUpload = e => {
+  const onUpload = useCallback((e) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = e => {
       setFiles(e.target.result);
       var flow = JSON.parse(e.target.result);
       if (flow) {
-        // console.log(flow.position);
-        const x = flow.position["0"];
-        const y = flow.position["1"];
-        const zoom = flow.position["zoom"];
+        const [x = 0, y = 0] = flow.position;
         setElements(flow.elements || []);
-        // setViewport({ x, y, zoom });
+        transform({ x, y, zoom: flow.zoom || 0 });
       }
     };
-  };
+  }, [setElements, transform]);
 
 
   const onLoad = (_reactFlowInstance) =>
@@ -106,7 +103,7 @@ export default function App() {
           <input onChange={onUpload} type="file" />
         </div>
       </div>
-      <ReactFlowProvider>
+      {/* <ReactFlowProvider> */}
         <div
           className="reactflow-wrapper"
           style={{ height: "100vh", width: "500px" }}
@@ -125,7 +122,15 @@ export default function App() {
           </ReactFlow>
         </div>
         <Sidebar nodeTypes= {nodeTypes} nodeNames = {nodeNames} />
-      </ReactFlowProvider>
+      {/* </ReactFlowProvider> */}
     </div>
   );
 }
+
+export default () => {
+  return (
+    <ReactFlowProvider>
+      <App />
+    </ReactFlowProvider>
+  );
+};
