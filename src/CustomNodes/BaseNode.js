@@ -7,8 +7,8 @@ export const baseNode = (data, isConnectable, num_inp, num_out) => {
   let componentInputReturn = [];
   let componentOutputReturn = [];
 
-  const inp_step = 200 / (num_inp + 1)
-  const out_step = 200 / (num_out + 1)
+  const inp_step = 250 / (num_inp + 1)
+  const out_step = 250 / (num_out + 1)
 
   for (let index = 0; index < num_inp; index++) {
     // console.log("_inp_" + index.toString());

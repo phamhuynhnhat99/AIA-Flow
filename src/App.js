@@ -55,6 +55,7 @@ const App = () => {
       setFiles(e.target.result);
       var flow = JSON.parse(e.target.result);
       if (flow) {
+        id = flow.elements.length;
         const [x = 0, y = 0] = flow.position;
         setElements(flow.elements || []);
         transform({ x, y, zoom: flow.zoom || 0 });
@@ -95,34 +96,35 @@ const App = () => {
 
   return (
     <div className="dndflow">
-      <div>
-        <button className="downandup" onClick={onDownload}>Download JSON</button>
-        <br />
-        <div className="downandup">
-          <h5>Upload JSON</h5>
-          <input onChange={onUpload} type="file" />
-        </div>
+      <div className="down-up">
+        <label className="button-down">
+          Download JSON
+          <button onClick={onDownload} hidden></button>
+        </label>
+        <label className="button-up">
+          Upload JSON
+          <input onChange={onUpload} type="file" hidden/>
+        </label>
       </div>
-      {/* <ReactFlowProvider> */}
-        <div
-          className="reactflow-wrapper"
-          style={{ height: "100vh", width: "500px" }}
-          ref={reactFlowWrapper}
+
+      <div
+        className="reactflow-wrapper"
+        style={{ height: "100vh", width: "500px" }}
+        ref={reactFlowWrapper}
+      >
+        <ReactFlow
+          elements={elements}
+          onConnect={onConnect}
+          onElementsRemove={onElementsRemove}
+          onLoad={onLoad}
+          onDrop={onDrop}
+          onDragOver={onDragOver}
+          nodeTypes={nodeTypes}
         >
-          <ReactFlow
-            elements={elements}
-            onConnect={onConnect}
-            onElementsRemove={onElementsRemove}
-            onLoad={onLoad}
-            onDrop={onDrop}
-            onDragOver={onDragOver}
-            nodeTypes={nodeTypes}
-          >
-            <Controls style={{marginBottom: '50vh'}}/>
-          </ReactFlow>
-        </div>
-        <Sidebar nodeTypes= {nodeTypes} nodeNames = {nodeNames} />
-      {/* </ReactFlowProvider> */}
+          <Controls style={{marginBottom: '50vh'}}/>
+        </ReactFlow>
+      </div>
+      <Sidebar nodeTypes= {nodeTypes} nodeNames = {nodeNames} />
     </div>
   );
 }

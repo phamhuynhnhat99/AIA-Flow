@@ -16,7 +16,7 @@ export default ({ nodeTypes, nodeNames }) => {
   return (
     <aside>
       <div className="description">
-        You can drag these nodes to the pane on the right.
+        You can drag these nodes to the pane.
       </div>
 
 

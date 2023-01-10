@@ -3,7 +3,7 @@ import React, { memo, useState } from "react";
 import { Handle } from "react-flow-renderer";
 
 export default memo(({ data, isConnectable }) => {
-  data["nameNode"] = "Text Input";
+  data["nameNode"] = "Input";
 
   const [text, setText] = useState("");
 
@@ -29,7 +29,7 @@ export default memo(({ data, isConnectable }) => {
         type="source"
         position="bottom"
         id={"_out_0"}
-        style={{ bottom: 7, left: 100, background: "#555" }}
+        style={{ bottom: 7, left: 125, background: "#555" }}
         isConnectable={isConnectable}
       />
     </>

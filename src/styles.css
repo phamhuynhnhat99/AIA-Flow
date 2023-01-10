@@ -5,13 +5,16 @@
 }
 
 .dndflow aside {
-  border-right: 1px solid #eee;
+  border-left: 10px solid #eee;
+  border-right: 10px solid #eee;
   padding: 15px 10px;
   font-size: 12px;
-  background: #ccd4d3;
+  background: #301934;
 }
 
 .dndflow aside .description {
+  color: aqua;
+  font-size: medium;
   margin-bottom: 10px;
 }
 
@@ -31,36 +34,92 @@
   border-color: #0041d0;
 }
 
+.dndflow .dndnode.output {
+  border-color: #ff0072;
+}
+
 .dndflow .dndnode.custom {
-  border-color: #00d111;
+  font-size: medium;
+  background-image: linear-gradient(to right, #2C3E50 0%, #4CA1AF  51%, #2C3E50  100%);
+  padding: 15px 25px;
+  text-align: center;
+  background-size: 150% auto;
+  color: white;            
+  border-radius: 10px;
+  display: block;
 }
 
 .dndflow .dndnode.custom.show {
-  border-color: #bbe116;
   width: 200px;
-  height: 40px;
+  background-image: linear-gradient(to right, #16BFFD 0%, #c03969  51%, #cd0808  100%);
+  padding: 15px 25px;
+  text-align: center;
+  background-size: 150% auto;
+  color: white;            
+  border-radius: 10px;
+  display: block;
 }
 
 .dndflow .dndnode.custom.input {
-  border-color: blue;
   width: 200px;
-  height: 40px;
-}
-
-.dndflow .dndnode.output {
-  border-color: #ff0072;
+  background-image: linear-gradient(to right, #16BFFD 0%, #c03969  51%, #cd0808  100%);
+  padding: 15px 25px;
+  text-align: center;
+  background-size: 150% auto;
+  color: white;            
+  border-radius: 10px;
+  display: block; 
 }
 
 .dndflow .reactflow-wrapper {
   flex-grow: 1;
   height: 100%;
+  background-color: #222222;
+  border-left: 10px solid #eee;
 }
 
-.dndflow .downandup {
-  border-color: aqua;
-  width: 120px;
-  height: 40px;
-  margin-bottom: 20px;
+.dndflow .down-up {
+  background-color: #AA336A;
+}
+
+.dndflow .down-up .button-down {
+  background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.dndflow .down-up .button-down:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.dndflow .down-up .button-up {
+  background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.dndflow .down-up .button-up:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
