@@ -11,13 +11,12 @@ export const baseNode = (data, isConnectable, num_inp, num_out) => {
   const out_step = 250 / (num_out + 1)
 
   for (let index = 0; index < num_inp; index++) {
-    // console.log("_inp_" + index.toString());
     componentInputReturn.push(
       <Handle
         type="target"
         position="top"
         id={"_inp_" + index.toString()}
-        style={{ left: inp_step*(index+1), background: "#555" }}
+        style={{ left: inp_step*(index+1), background: "#3EB489" }}
         onConnect={(params) => console.log("handle onConnect", params)}
         isConnectable={isConnectable}
       />
@@ -30,7 +29,7 @@ export const baseNode = (data, isConnectable, num_inp, num_out) => {
         type="source"
         position="bottom"
         id={"_out_" + index.toString()}
-        style={{ bottom: 7, left: out_step*(index+1), background: "#555" }}
+        style={{ bottom: 7, left: out_step*(index+1), background: "#FFA500" }}
         isConnectable={isConnectable}
       />
       );

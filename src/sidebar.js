@@ -58,6 +58,134 @@ export default ({ nodeTypes, nodeNames }) => {
         Output Node
       </div> */}
 
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      <div
+        className="dndnode custom"
+        onDragStart={(event) => onDragStart(event, "defautl")}
+        draggable
+      >
+        Default Node
+      </div>
+      
+      
     </aside>
   );
 };

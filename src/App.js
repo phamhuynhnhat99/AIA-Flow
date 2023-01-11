@@ -14,8 +14,8 @@ import exportNodeTypes from "./CustomNodes/exportNodes";
 import exportNodeNames from "./CustomNodes/exportNodes";
 
 import Sidebar from "./sidebar.js";
-let id = 0;
-const getId = () => `dndnode_${id++}`;
+
+const getId = () => `dndnode_${+ new Date()}`;
 
 export const nodeTypes = exportNodeTypes.exportNodeTypes
 export const nodeNames = exportNodeNames.exportNodeNames
@@ -55,7 +55,6 @@ const App = () => {
       setFiles(e.target.result);
       var flow = JSON.parse(e.target.result);
       if (flow) {
-        id = flow.elements.length;
         const [x = 0, y = 0] = flow.position;
         setElements(flow.elements || []);
         transform({ x, y, zoom: flow.zoom || 0 });
@@ -87,7 +86,7 @@ const App = () => {
       data: { label: `${type} node`}
     };
     if (newNode.type === "textInputNode") {
-      newNode.data["text"] = "0";
+      newNode.data["text"] = "";
     }
 
     // console.log(newNode);
@@ -96,12 +95,13 @@ const App = () => {
 
   return (
     <div className="dndflow">
+
       <div className="down-up">
-        <label className="button-down">
+        <label className="button-down-up">
           Download JSON
           <button onClick={onDownload} hidden></button>
         </label>
-        <label className="button-up">
+        <label className="button-down-up">
           Upload JSON
           <input onChange={onUpload} type="file" hidden/>
         </label>
@@ -124,7 +124,9 @@ const App = () => {
           <Controls style={{marginBottom: '50vh'}}/>
         </ReactFlow>
       </div>
+
       <Sidebar nodeTypes= {nodeTypes} nodeNames = {nodeNames} />
+      
     </div>
   );
 }

@@ -6,7 +6,6 @@
 
 .dndflow aside {
   border-left: 10px solid #eee;
-  border-right: 10px solid #eee;
   padding: 15px 10px;
   font-size: 12px;
   background: #301934;
@@ -38,85 +37,66 @@
   border-color: #ff0072;
 }
 
+
 .dndflow .dndnode.custom {
   font-size: medium;
-  background-image: linear-gradient(to right, #2C3E50 0%, #4CA1AF  51%, #2C3E50  100%);
+  background-color: #3EB489;
   padding: 15px 25px;
   text-align: center;
   background-size: 150% auto;
   color: white;            
   border-radius: 10px;
   display: block;
+}
+
+.dndflow .dndnode.custom:hover {
+  background-color: #8E546F;
+  text-decoration: none;
 }
 
 .dndflow .dndnode.custom.show {
-  width: 200px;
-  background-image: linear-gradient(to right, #16BFFD 0%, #c03969  51%, #cd0808  100%);
-  padding: 15px 25px;
+  width: 12vw;
+  background-color: #8E546F;
+  padding: 20px 25px;
   text-align: center;
-  background-size: 150% auto;
+  background-size: 100% auto;
   color: white;            
   border-radius: 10px;
   display: block;
 }
 
-.dndflow .dndnode.custom.input {
-  width: 200px;
-  background-image: linear-gradient(to right, #16BFFD 0%, #c03969  51%, #cd0808  100%);
-  padding: 15px 25px;
-  text-align: center;
-  background-size: 150% auto;
-  color: white;            
-  border-radius: 10px;
-  display: block; 
+.dndflow .dndnode.custom.show .text {
+  color: black;
+  font-size: 1.1rem;
 }
 
 .dndflow .reactflow-wrapper {
   flex-grow: 1;
   height: 100%;
   background-color: #222222;
-  border-left: 10px solid #eee;
 }
 
 .dndflow .down-up {
   background-color: #AA336A;
+  max-height: 100vh;
+  overflow: scroll;
 }
 
-.dndflow .down-up .button-down {
+.dndflow .down-up .button-down-up {
   background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
   margin: 10px;
-  padding: 15px 45px;
+  padding: 15px 25px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;            
-  box-shadow: 0 0 20px #eee;
+  box-shadow: 0 0 10px #eee;
   border-radius: 10px;
   display: block;
 }
 
-.dndflow .down-up .button-down:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-}
-
-.dndflow .down-up .button-up {
-  background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
-  margin: 10px;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;            
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  display: block;
-}
-
-.dndflow .down-up .button-up:hover {
+.dndflow .down-up .button-down-up:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
@@ -128,7 +108,9 @@
   }
 
   .dndflow aside {
-    width: 20%;
-    max-width: 250px;
+    width: 16vw;
+    max-width: 40vw;
+    max-height: 100vh;
+    overflow: scroll;
   }
 }
