@@ -15,6 +15,7 @@ import exportNodeNames from "./CustomNodes/exportNodes";
 
 import Sidebar from "./sidebar.js";
 
+import { v4 as uuid4 } from "uuid";
 const getId = () => `dndnode_${+ new Date()}`;
 
 export const nodeTypes = exportNodeTypes.exportNodeTypes

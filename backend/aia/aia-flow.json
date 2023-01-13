@@ -1,0 +1,168 @@
+{
+    "elements": [
+        {
+            "id": "dndnode_1673372256098",
+            "type": "textInputNode",
+            "position": {
+                "x": 88.5625,
+                "y": 41
+            },
+            "data": {
+                "label": "textInputNode node",
+                "text": "/Users/phnhat/FTI/AIA-Flow/backend/test_images/people_3.jpg",
+                "nameNode": "Text Input"
+            }
+        },
+        {
+            "id": "dndnode_1673372283230",
+            "type": "readImageNode",
+            "position": {
+                "x": 156.5625,
+                "y": 191
+            },
+            "data": {
+                "label": "readImageNode node",
+                "nameNode": "Read Image"
+            }
+        },
+        {
+            "id": "dndnode_1673372291196",
+            "type": "textInputNode",
+            "position": {
+                "x": 640.5625,
+                "y": 160
+            },
+            "data": {
+                "label": "textInputNode node",
+                "text": "0.7",
+                "nameNode": "Text Input"
+            }
+        },
+        {
+            "id": "dndnode_1673372298430",
+            "type": "yolov5sNode",
+            "position": {
+                "x": 433.5625,
+                "y": 366
+            },
+            "data": {
+                "label": "yolov5sNode node",
+                "nameNode": "People Detector (Yolov5s)"
+            }
+        },
+        {
+            "id": "dndnode_1673372316385",
+            "type": "saveImageNode",
+            "position": {
+                "x": 150.5625,
+                "y": 561
+            },
+            "data": {
+                "label": "saveImageNode node",
+                "nameNode": "Save Image"
+            }
+        },
+        {
+            "id": "dndnode_1673372330132",
+            "type": "textInputNode",
+            "position": {
+                "x": 792.5625,
+                "y": 307
+            },
+            "data": {
+                "label": "textInputNode node",
+                "text": "/Users/phnhat/FTI/AIA-Flow/backend/test_images/people_4.jpg",
+                "nameNode": "Text Input"
+            }
+        },
+        {
+            "id": "dndnode_1673372345938",
+            "type": "readImageNode",
+            "position": {
+                "x": 692.5625,
+                "y": 522
+            },
+            "data": {
+                "label": "readImageNode node",
+                "nameNode": "Read Image"
+            }
+        },
+        {
+            "id": "dndnode_1673372357898",
+            "type": "saveImageNode",
+            "position": {
+                "x": 447.5625,
+                "y": 742
+            },
+            "data": {
+                "label": "saveImageNode node",
+                "nameNode": "Save Image"
+            }
+        },
+        {
+            "id": "dndnode_1673418998635",
+            "type": "readImageNode",
+            "position": {
+                "x": 1393.0937413611255,
+                "y": 1353.9205690191777
+            },
+            "data": {
+                "label": "readImageNode node",
+                "nameNode": "Read Image"
+            }
+        },
+        {
+            "source": "dndnode_1673372256098",
+            "sourceHandle": "_out_0",
+            "target": "dndnode_1673372283230",
+            "targetHandle": "_inp_0",
+            "id": "reactflow__edge-dndnode_1673372256098_out_0-dndnode_1673372283230_inp_0",
+            "type": "default"
+        },
+        {
+            "source": "dndnode_1673372283230",
+            "sourceHandle": "_out_0",
+            "target": "dndnode_1673372298430",
+            "targetHandle": "_inp_0",
+            "id": "reactflow__edge-dndnode_1673372283230_out_0-dndnode_1673372298430_inp_0",
+            "type": "default"
+        },
+        {
+            "source": "dndnode_1673372291196",
+            "sourceHandle": "_out_0",
+            "target": "dndnode_1673372298430",
+            "targetHandle": "_inp_1",
+            "id": "reactflow__edge-dndnode_1673372291196_out_0-dndnode_1673372298430_inp_1",
+            "type": "default"
+        },
+        {
+            "source": "dndnode_1673372298430",
+            "sourceHandle": "_out_0",
+            "target": "dndnode_1673372316385",
+            "targetHandle": "_inp_0",
+            "id": "reactflow__edge-dndnode_1673372298430_out_0-dndnode_1673372316385_inp_0",
+            "type": "default"
+        },
+        {
+            "source": "dndnode_1673372330132",
+            "sourceHandle": "_out_0",
+            "target": "dndnode_1673372345938",
+            "targetHandle": "_inp_0",
+            "id": "reactflow__edge-dndnode_1673372330132_out_0-dndnode_1673372345938_inp_0",
+            "type": "default"
+        },
+        {
+            "source": "dndnode_1673372345938",
+            "sourceHandle": "_out_0",
+            "target": "dndnode_1673372357898",
+            "targetHandle": "_inp_0",
+            "id": "reactflow__edge-dndnode_1673372345938_out_0-dndnode_1673372357898_inp_0",
+            "type": "default"
+        }
+    ],
+    "position": [
+        46.26685750086472,
+        71.95890966171771
+    ],
+    "zoom": 0.7358856100659487
+}
