@@ -11,12 +11,12 @@ Node = None
 
 def init_node_env():
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--version', dest='version', type=str, help='Get this version')
-    parser.add_argument('--title', dest='title', type=str, help='Get this title')
-    args = parser.parse_args()
-    os.environ['VERSION'] = args.version if args.version is not None else "0"
-    os.environ['TITLE'] = args.title if args.title is not None else "AIA Project"
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument('--version', dest='version', type=str, help='Get this version')
+#     parser.add_argument('--title', dest='title', type=str, help='Get this title')
+#     args = parser.parse_args()
+    os.environ['VERSION'] = "0" # args.version if args.version is not None else "0"
+    os.environ['TITLE'] = "AIA Project" # args.title if args.title is not None else "AIA Project"
     
 
     global Node

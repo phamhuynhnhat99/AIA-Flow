@@ -16,7 +16,7 @@ export const baseNode = (data, isConnectable, num_inp, num_out) => {
         type="target"
         position="top"
         id={"_inp_" + index.toString()}
-        style={{ left: inp_step*(index+1), background: "#3EB489" }}
+        style={{ left: inp_step*(index+1), background: "#000000" }}
         onConnect={(params) => console.log("handle onConnect", params)}
         isConnectable={isConnectable}
       />
@@ -29,7 +29,7 @@ export const baseNode = (data, isConnectable, num_inp, num_out) => {
         type="source"
         position="bottom"
         id={"_out_" + index.toString()}
-        style={{ bottom: 7, left: out_step*(index+1), background: "#FFA500" }}
+        style={{ bottom: 7, left: out_step*(index+1), background: "#000000" }}
         isConnectable={isConnectable}
       />
       );

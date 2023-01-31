@@ -5,6 +5,8 @@ widgets = import_widgets(__file__) # optional
 import requests
 import io
 from PIL import Image, ImageFilter
+from aia.core.Node import Node as Node
+
 
 class ImageNodeBase(Node):
     path = "image/image_nodes" # compulsory

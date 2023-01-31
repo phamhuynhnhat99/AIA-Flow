@@ -32,6 +32,7 @@ class Coordinator:
         """ Load all of nodes that from aia.main.auto_loading folder """
         auto_loading_path = os.path.join(os.path.dirname(__file__), "no_gui_nodes")
         auto_loading_nodes = os.listdir(auto_loading_path)
+
         try:
             auto_loading_nodes.remove("__pycache__")
         except:
@@ -46,6 +47,7 @@ class Coordinator:
                 self.no_gui_nodes += __import__(module_name).export_nodes
             except:
                 continue
+        print(self.no_gui_nodes)
 
 
     def display_no_gui_nodes(self):
@@ -177,7 +179,7 @@ class Coordinator:
         self.order = []
 
         no_gui_nodes_className = [node.className for node in self.no_gui_nodes]
-
+        print(no_gui_nodes_className)
         with open(aia_load) as json_file:
             aia = json.load(json_file)
             elements = aia["elements"]

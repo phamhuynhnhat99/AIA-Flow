@@ -8,11 +8,11 @@
   border-left: 10px solid #eee;
   padding: 15px 10px;
   font-size: 12px;
-  background: #301934;
+  background: #ffffff;
 }
 
 .dndflow aside .description {
-  color: aqua;
+  color: rgb(255, 136, 0);
   font-size: medium;
   margin-bottom: 10px;
 }
@@ -40,27 +40,27 @@
 
 .dndflow .dndnode.custom {
   font-size: medium;
-  background-color: #3EB489;
+  background-color: #ffffff;
   padding: 15px 25px;
   text-align: center;
   background-size: 150% auto;
-  color: white;            
+  color: rgb(0, 0, 0);            
   border-radius: 10px;
   display: block;
 }
 
 .dndflow .dndnode.custom:hover {
-  background-color: #8E546F;
+  background-color: #f5ecd3;
   text-decoration: none;
 }
 
 .dndflow .dndnode.custom.show {
-  width: 12vw;
-  background-color: #8E546F;
+  width: 10vw;
+  background-color: #ffffff;
   padding: 20px 25px;
   text-align: center;
   background-size: 100% auto;
-  color: white;            
+  color: rgb(0, 0, 0);            
   border-radius: 10px;
   display: block;
 }
@@ -73,26 +73,25 @@
 .dndflow .reactflow-wrapper {
   flex-grow: 1;
   height: 100%;
-  background-color: #222222;
+  background-color: #ffffff;
 }
 
 .dndflow .down-up {
-  background-color: #AA336A;
+  background-color: #ffffff;
   max-height: 100vh;
   overflow: scroll;
 }
 
 .dndflow .down-up .button-down-up {
-  background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
+  background-color: #ffffff;
   margin: 10px;
   padding: 15px 25px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;            
+  color: rgb(0, 0, 0);            
   box-shadow: 0 0 10px #eee;
-  border-radius: 10px;
   display: block;
 }
 

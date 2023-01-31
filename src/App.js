@@ -16,10 +16,14 @@ import exportNodeNames from "./CustomNodes/exportNodes";
 import Sidebar from "./sidebar.js";
 
 import { v4 as uuid4 } from "uuid";
+import axios from 'axios';
+// import Popup from 'reactjs-popup';
+
 const getId = () => `dndnode_${+ new Date()}`;
 
 export const nodeTypes = exportNodeTypes.exportNodeTypes
 export const nodeNames = exportNodeNames.exportNodeNames
+
 
 
 function download(content, fileName, contentType) {
@@ -39,6 +43,22 @@ const App = () => {
   const onElementsRemove = (elementsToRemove) =>
     setElements((els) => removeElements(elementsToRemove, els));
 
+  const onBuild = useCallback(() => {
+    if (reactFlowInstance) {
+      const flow = reactFlowInstance.toObject();
+      var aia_json = JSON.stringify(flow)
+      const config = { 'content-type': 'application/json' };
+      const response = axios.post('http://127.0.0.1:5000/build_graph', flow , config).then(res => {
+        if (res.data.status === 'success') {
+          alert("Message OK.");
+        } else if (res.data.status === 'fail') {
+           alert("Message failed to send, please try again.")}
+          }); 
+      console.log(response.data);
+      // download(aia_json, "aia-flow.json", "text/plain");
+    }
+  }, [reactFlowInstance]);     
+  
   const onDownload = useCallback(() => {
     if (reactFlowInstance) {
       const flow = reactFlowInstance.toObject();
@@ -98,6 +118,10 @@ const App = () => {
     <div className="dndflow">
 
       <div className="down-up">
+      <label className="button-down-up">
+          Build Graph
+          <button onClick={onBuild} hidden></button>
+        </label>
         <label className="button-down-up">
           Download JSON
           <button onClick={onDownload} hidden></button>

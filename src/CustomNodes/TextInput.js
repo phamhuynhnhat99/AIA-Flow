@@ -30,7 +30,7 @@ export default memo(({ data, isConnectable }) => {
         type="source"
         position="bottom"
         id={"_out_0"}
-        style={{ bottom: 7, left: 125, background: "#FFA500" }}
+        style={{ bottom: 7, left: 125, background: "#000000" }}
         isConnectable={isConnectable}
       />
     </>
