@@ -45,9 +45,8 @@ const App = () => {
   const onBuild = useCallback(() => {
     if (reactFlowInstance) {
       const flow = reactFlowInstance.toObject();
-      var aia_json = JSON.stringify(flow)
       const config = { 'content-type': 'application/json' };
-      const response = axios.post('http://127.0.0.1:5000/build_graph', flow , config).then(res => {
+      const response = axios.post('http://127.0.0.1:6969/build_graph', flow , config).then(res => {
         if (res.data.status === 'success') {
           alert("Message OK.");
         } else if (res.data.status === 'fail') {

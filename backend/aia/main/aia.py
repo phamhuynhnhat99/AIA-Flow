@@ -31,7 +31,6 @@ def run():
         coordinator.display_order()
         print("-----------------------------------------")
         print("❤️ ❤️ ❤️ ❤️ ❤️  Welcome to my world ❤️ ❤️ ❤️ ❤️ ❤️")
-        print("save: Saving this project")
         print("load: Loading a json file")
         print("0: Exit Program")
         print("1: Registering a new node")
@@ -67,10 +66,6 @@ def run():
                 gid = -1
             coordinator.updating_a_registered_node(gid)
 
-
-        elif choice == "save":
-            aia_save = config["save_and_load"]["json_file_save"]
-            coordinator.save(aia_save)
         elif choice == "load":
             aia_load = config["save_and_load"]["json_file_load"]
             coordinator.load(aia_load)

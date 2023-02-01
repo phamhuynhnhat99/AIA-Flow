@@ -1,5 +1,5 @@
-from aia.NENV import *
-from aia.core.Node import Node as Node
+from NENV import *
+
 widgets = import_widgets(__file__) # optional
 
 class TextNodeBase(Node):

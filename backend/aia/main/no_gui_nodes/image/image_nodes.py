@@ -1,11 +1,10 @@
-from aia.NENV import *
+from NENV import *
 
 widgets = import_widgets(__file__) # optional
 
 import requests
 import io
 from PIL import Image, ImageFilter
-from aia.core.Node import Node as Node
 
 
 class ImageNodeBase(Node):
@@ -13,7 +12,7 @@ class ImageNodeBase(Node):
 
     def __init__(self, num_inp, num_out, title):
         super().__init__(num_inp=num_inp, num_out=num_out, title=title)
-        self.default_image = Image.open("aia.png")
+        self.default_image = Image.new('RGB', (100, 100))
         self.output = self.default_image
 
     

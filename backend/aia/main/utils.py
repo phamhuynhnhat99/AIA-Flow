@@ -29,24 +29,22 @@ class Coordinator:
 
     
     def auto_loading(self):
-        """ Load all of nodes that from aia.main.auto_loading folder """
-        auto_loading_path = os.path.join(os.path.dirname(__file__), "no_gui_nodes")
-        auto_loading_nodes = os.listdir(auto_loading_path)
+        """ Load all of nodes that from aia.main.no_gui_nodes folder """
 
-        try:
-            auto_loading_nodes.remove("__pycache__")
-        except:
-            None
-        for aln in auto_loading_nodes:
-            aln_path = os.path.join(auto_loading_path, aln)
-            sys.path.append(aln_path)
-            aln_nodes = aln + "_nodes.py"
-            nodes_py = os.path.join(aln_path, aln_nodes)
+        script_dir = os.path.dirname(__file__) # backend.aia.main folder
+        aia_path = script_dir.split("/main")[0]
+        sys.path.append(aia_path)
+        no_gui_nodes_path = os.path.join(script_dir, "no_gui_nodes")
+        list_of_nodes = os.listdir(no_gui_nodes_path)
+
+        for node in list_of_nodes:
+            my_module_dir = os.path.join(no_gui_nodes_path, node)
+            sys.path.append(my_module_dir)
+            node_name = node + "_nodes"
             try:
-                module_name = os.path.basename(nodes_py).split(".py")[0]
-                self.no_gui_nodes += __import__(module_name).export_nodes
-            except:
-                continue
+                self.no_gui_nodes += __import__(node_name).export_nodes
+            except Exception as e:
+                print(e)
 
 
     def display_no_gui_nodes(self):
@@ -120,13 +118,8 @@ class Coordinator:
 
                     self.updating_toposort()
 
-
-    def save(self, aia_save):
-        aia = dict()
-
     
-    def load(self, aia_load):
-
+    def reset_all_ignore_no_gui_nodes(self):
         self.title = os.environ["TITLE"]
         self.version = os.environ["VERSION"]
         self.flow = Flow()
@@ -135,8 +128,15 @@ class Coordinator:
         self.registered_nodes = dict()
         self.order = []
 
+    
+    def load(self, aia_load):
+
+        self.reset_all_ignore_no_gui_nodes()
+
         no_gui_nodes_className = [node.className for node in self.no_gui_nodes]
-        print(no_gui_nodes_className)
+        for className in no_gui_nodes_className:
+            print(className)
+
         with open(aia_load) as json_file:
             aia = json.load(json_file)
             elements = aia["elements"]
