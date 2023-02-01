@@ -2,7 +2,7 @@ import os
 import sys
 import json
 
-from aia.flow.flow import Flow
+from ..flow.flow import Flow
 
 class Coordinator:
 
@@ -47,7 +47,6 @@ class Coordinator:
                 self.no_gui_nodes += __import__(module_name).export_nodes
             except:
                 continue
-        print(self.no_gui_nodes)
 
 
     def display_no_gui_nodes(self):
@@ -124,48 +123,6 @@ class Coordinator:
 
     def save(self, aia_save):
         aia = dict()
-
-        """ general info """
-        aia["general info"] = dict()
-        aia["general info"]["title"] = self.title
-        aia["general info"]["version"] = self.version
-        
-        """ self.no_gui_nodes """
-        aia["required nodes path"] = dict()
-        aia["required nodes path"]["path"] = "no_gui_nodes"
-        aia["required nodes path"]["no gui nodes"] = list()
-        for ind, node in enumerate(self.no_gui_nodes):
-            tmp = dict()
-            tmp["index"] = ind
-            tmp["title"] = node.title
-            tmp["module_name"] = node.path
-            aia["required nodes path"]["no gui nodes"].append(tmp)
-
-        """ self.registered_nodes """
-        aia["scripts"] = list()
-        flow = dict()
-        flow["title"] = "doSth"
-        flow["flow"] = dict()
-        flow["flow"]["registered nodes"] = list()
-        for gid, node in self.registered_nodes.items():
-            tmp = dict()
-            tmp["gid"] = gid
-            tmp["title"] = node.__class__.title
-            flow["flow"]["registered nodes"].append(tmp)
-
-        """ self.arrows """
-        flow["flow"]["arrows"] = list()
-        for arrow in self.arrows:
-            u, v = arrow[0], arrow[1]
-            tmp = dict()
-            tmp["from"] = u
-            tmp["to"] = v
-            tmp["at"] = self.locations[(u, v)]
-            flow["flow"]["arrows"].append(tmp)
-        aia["scripts"].append(flow)
-        
-        with open(aia_save, "w") as json_file:
-            json.dump(aia, json_file)
 
     
     def load(self, aia_load):

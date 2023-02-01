@@ -1,3 +1,3 @@
-from aia.NENV import *
+from .NENV import *
 
-import aia.main.utils as utils
+from .main import utils as utils

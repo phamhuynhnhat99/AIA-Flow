@@ -1,15 +1,16 @@
-from uuid import uuid4
+import time
 
 class IDCtr:
     """
-    A simple ascending integer ID counter.
+    A simple timestamp ID Generator.
     """
 
     def __init__(self):
         self.ctr = -1
 
     def new_ctr(self):
-        self.ctr = "dndnode_" + str(uuid4())
+        current_time = round(time.time() * 1000)
+        self.ctr = "dndnode_" + str(current_time)
         return self.ctr
 
     def set(self, ctr):

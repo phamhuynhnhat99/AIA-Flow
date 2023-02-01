@@ -1,12 +1,15 @@
 import os
 import argparse
-from aia.core.Node import Node as Node_
+from .core.Node import Node as Node_
 
 
 import configparser
 config = configparser.ConfigParser()
-config.read("config.ini")
 
+aia_folder_path = os.path.abspath(os.path.join(__file__, os.pardir))
+backend_folder_path = os.path.abspath(os.path.join(aia_folder_path, os.pardir))
+config_ini_path = (os.path.join(backend_folder_path, "config.ini"))
+config.read(config_ini_path)
 Node = None
 
 def init_node_env():

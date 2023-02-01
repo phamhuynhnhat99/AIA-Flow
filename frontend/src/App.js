@@ -15,7 +15,6 @@ import exportNodeNames from "./CustomNodes/exportNodes";
 
 import Sidebar from "./sidebar.js";
 
-import { v4 as uuid4 } from "uuid";
 import axios from 'axios';
 // import Popup from 'reactjs-popup';
 
@@ -52,10 +51,9 @@ const App = () => {
         if (res.data.status === 'success') {
           alert("Message OK.");
         } else if (res.data.status === 'fail') {
-           alert("Message failed to send, please try again.")}
-          }); 
+          alert("Message failed to send, please try again.")}
+        }); 
       console.log(response.data);
-      // download(aia_json, "aia-flow.json", "text/plain");
     }
   }, [reactFlowInstance]);     
   
@@ -118,7 +116,7 @@ const App = () => {
     <div className="dndflow">
 
       <div className="down-up">
-      <label className="button-down-up">
+        <label className="button-down-up">
           Build Graph
           <button onClick={onBuild} hidden></button>
         </label>
@@ -146,7 +144,7 @@ const App = () => {
           onDragOver={onDragOver}
           nodeTypes={nodeTypes}
         >
-          <Controls style={{marginBottom: '50vh'}}/>
+          <Controls style={{marginBottom: '5vh'}}/>
         </ReactFlow>
       </div>
 
