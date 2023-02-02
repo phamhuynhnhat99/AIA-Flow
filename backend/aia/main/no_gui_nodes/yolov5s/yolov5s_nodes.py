@@ -27,7 +27,7 @@ class Yolov5sNodeBase(Node):
 class yolov5sNode(Yolov5sNodeBase):
     className = "yolov5sNode"
     title = "Detector (Yolov5s)"
-    min_confidence = 0.7
+    min_confidence = 0.7 # default
 
     def __init__(self, num_inp=2, num_out=1, title = title):
         super().__init__(num_inp, num_out, title)

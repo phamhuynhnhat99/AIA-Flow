@@ -1,6 +1,5 @@
 import os
 import sys
-import json
 
 from ..flow.flow import Flow
 
@@ -32,11 +31,9 @@ class Coordinator:
         """ Load all of nodes that from aia.main.no_gui_nodes folder """
 
         script_dir = os.path.dirname(__file__) # backend.aia.main folder
-        aia_path = script_dir.split("/main")[0]
-        sys.path.append(aia_path)
         no_gui_nodes_path = os.path.join(script_dir, "no_gui_nodes")
-        list_of_nodes = os.listdir(no_gui_nodes_path)
 
+        list_of_nodes = os.listdir(no_gui_nodes_path)
         for node in list_of_nodes:
             my_module_dir = os.path.join(no_gui_nodes_path, node)
             sys.path.append(my_module_dir)
@@ -45,6 +42,8 @@ class Coordinator:
                 self.no_gui_nodes += __import__(node_name).export_nodes
             except Exception as e:
                 print(e)
+
+        self.no_gui_nodes_className = [node.className for node in self.no_gui_nodes]
 
 
     def display_no_gui_nodes(self):
@@ -129,39 +128,35 @@ class Coordinator:
         self.order = []
 
     
-    def load(self, aia_load):
-
+    def load(self, aia_json):
         self.reset_all_ignore_no_gui_nodes()
 
-        no_gui_nodes_className = [node.className for node in self.no_gui_nodes]
-        for className in no_gui_nodes_className:
-            print(className)
-
-        with open(aia_load) as json_file:
-            aia = json.load(json_file)
-            elements = aia["elements"]
-            for element in elements:
-                if element["type"] != "default": # is node
-                    node = element
-                    ind = no_gui_nodes_className.index(node["type"])
+        elements = aia_json["elements"]
+        for element in elements:
+            if element["type"] != "default": # is node
+                node = element
+                ind = self.no_gui_nodes_className.index(node["type"])
+                try:
                     new_node = self.no_gui_nodes[ind]()
-                    new_node.global_id = node["id"]
-                    if node["type"] == "textInputNode":
-                        new_node.text = node["data"]["text"]
-                    
-                    self.registered_nodes[new_node.global_id] = new_node
-                else: # is edge
-                    edge = element
-                    u = edge["source"]
-                    v = edge["target"]
-                    ind = int(edge["targetHandle"].split("_inp_")[-1])
-                    self.arrows.append([u, v])
-                    self.locations[(u, v)] = ind
-                    self.registered_nodes[v].nodeinputs[ind] = self.registered_nodes[u]
-            
-            self.updating_toposort()
-            
-            json_file.close()
+                except Exception as e:
+                    print(e)
+                    continue
+                new_node.global_id = node["id"]
+                if node["type"] == "textInputNode":
+                    new_node.text = node["data"]["text"]
+                
+                self.registered_nodes[new_node.global_id] = new_node
+
+            else: # is edge
+                edge = element
+                u = edge["source"]
+                v = edge["target"]
+                ind = int(edge["targetHandle"].split("_inp_")[-1])
+                self.arrows.append([u, v])
+                self.locations[(u, v)] = ind
+                self.registered_nodes[v].nodeinputs[ind] = self.registered_nodes[u]
+        
+        self.updating_toposort()
 
 
 class export_widgets:
