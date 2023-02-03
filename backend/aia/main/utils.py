@@ -1,7 +1,7 @@
 import os
 import sys
 
-from ..flow.flow import Flow
+from ..core.Flow import Flow
 
 class Coordinator:
 
