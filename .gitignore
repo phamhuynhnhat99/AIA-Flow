@@ -4,3 +4,6 @@
 /backend/aia/__pycache__
 /backend/aia/core/__pycache__
 /backend/aia/main/__pycache__
+/backend/aia/main/no_gui_nodes/image/__pycache__
+/backend/aia/main/no_gui_nodes/text/__pycache__
+/backend/aia/main/no_gui_nodes/yolov5s/__pycache__
